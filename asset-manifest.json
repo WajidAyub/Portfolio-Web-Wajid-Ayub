@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wajid-ayub/static/css/main.adedc211.css",
+    "main.js": "/wajid-ayub/static/js/main.143c4ad4.js",
+    "index.html": "/wajid-ayub/index.html",
+    "main.adedc211.css.map": "/wajid-ayub/static/css/main.adedc211.css.map",
+    "main.143c4ad4.js.map": "/wajid-ayub/static/js/main.143c4ad4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.adedc211.css",
+    "static/js/main.143c4ad4.js"
+  ]
+}
