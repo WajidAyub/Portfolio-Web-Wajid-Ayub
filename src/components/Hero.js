@@ -35,10 +35,6 @@ const Hero = () => {
                 alt="Wajid Ayub"
                 className="w-full h-auto object-contain"
                 style={{ maxHeight: '600px' }}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1469&auto=format&fit=crop";
-                }}
               />
             </div>
             
