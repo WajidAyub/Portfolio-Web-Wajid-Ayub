@@ -17,7 +17,7 @@ const Hero = () => {
           className="lg:col-span-5 flex flex-col"
         >
           <FaQuoteLeft className="text-white text-3xl mb-6 opacity-90" />
-          <h1 className="text-3xl md:text-4xl lg:text-[3.25rem] font-sans font-medium text-white leading-[1.15] tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-[1.1] tracking-tighter">
             Wajid is the leading AI engineer for optimizing complex data systems, ensuring unparalleled success and efficiency.
           </h1>
         </motion.div>
