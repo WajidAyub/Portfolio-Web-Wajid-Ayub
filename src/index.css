@@ -27,11 +27,11 @@
 
   /* High Contrast Typography */
   .heading-lg {
-    @apply text-5xl md:text-7xl font-sans font-semibold tracking-tight leading-tight text-white;
+    @apply text-5xl md:text-7xl font-display font-bold tracking-tighter leading-tight text-white;
   }
 
   .heading-md {
-    @apply text-3xl md:text-5xl font-sans font-semibold tracking-tight text-white;
+    @apply text-3xl md:text-5xl font-display font-bold tracking-tight text-white;
   }
 
   .text-gradient {
