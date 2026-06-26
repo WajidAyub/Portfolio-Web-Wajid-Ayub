@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaQuoteLeft } from 'react-icons/fa';
+import profileImg from '../images/profile.png';
 
 const Hero = () => {
   return (
@@ -31,7 +32,7 @@ const Hero = () => {
           <div className="relative inline-block w-full max-w-[360px]">
             <div className="rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 flex justify-center items-center">
               <img
-                src="/images/profile.png"
+                src={profileImg}
                 alt="Wajid Ayub"
                 className="w-full h-auto object-contain"
                 style={{ maxHeight: '600px' }}
