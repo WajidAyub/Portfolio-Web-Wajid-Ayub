@@ -1,113 +1,66 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGraduationCap, FaBriefcase, FaCode, FaLightbulb } from 'react-icons/fa';
 
 const About = () => {
-  // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden bg-brand-dark bg-grid-pattern">
-      {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Glowing Orbs */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-accent-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse-slow delay-1000" />
-
-        {/* Floating Particles - consistent with Hero */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute bg-accent-400/30 rounded-full"
-            style={{
-              width: Math.random() * 4 + 2 + 'px',
-              height: Math.random() * 4 + 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-            }}
-            animate={{
-              y: [0, -100, 0],
-              opacity: [0, 0.5, 0]
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
-      </div>
-
+    <section id="about" className="py-24 relative overflow-hidden bg-black border-t border-white/10">
       <div className="container-custom relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-4xl mx-auto"
         >
-          {/* Section Title */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="heading-lg mb-4">
-              About <span className="text-gradient drop-shadow-neon">Me</span>
+          {/* Section Header */}
+          <motion.div variants={itemVariants} className="mb-16">
+            <h2 className="heading-lg max-w-3xl">
+              Bridging the gap between complex algorithms and practical applications.
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-accent-500 to-transparent mx-auto" />
           </motion.div>
 
-          {/* Content Grid */}
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Left: Bio */}
-            <motion.div variants={itemVariants} className="space-y-6 text-slate-300 leading-relaxed text-lg p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:border-accent-500/30 transition-colors shadow-lg group">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Bio Column */}
+            <motion.div variants={itemVariants} className="space-y-6 text-white/60 text-lg leading-relaxed font-sans">
               <p>
-                I am a passionate <span className="text-accent-400 font-semibold group-hover:text-accent-300 transition-colors">AI & Machine Learning Engineer</span> dedicated to building intelligent systems that solve real-world problems.
+                I am a passionate <span className="text-white font-medium">AI & Machine Learning Engineer</span> dedicated to building intelligent systems that solve real-world problems.
               </p>
               <p>
-                With a strong foundation in Artificial Intelligence and learning about Deep Learning, Data Analysis, and Mathematics, I bridge the gap between complex algorithms and practical applications.
+                With a strong foundation in Artificial Intelligence and learning about Deep Learning, Data Analysis, and Mathematics, I bridge the gap between complex algorithms and practical applications. My background has equipped me with a deep understanding of how to architect models that scale.
               </p>
               <p>
-                My journey involves continuous learning and experimenting with cutting-edge technologies to create impactful solutions.
+                My journey involves continuous learning and experimenting with cutting-edge technologies to create impactful solutions. Whether it's training a neural network or optimizing an inference pipeline, I am driven by the intersection of data and software engineering.
               </p>
             </motion.div>
 
-            {/* Right: Stats/Highlights */}
-            <motion.div variants={itemVariants} className="grid gap-6">
-              {[
-                { icon: FaGraduationCap, title: "Education", desc: "BS Artificial Intelligence (In Progress)" },
-                { icon: FaBriefcase, title: "Experience", desc: "Freelance AI Developer & Researcher" },
-                { icon: FaCode, title: "Development", desc: "Python, TensorFlow, PyTorch, React" },
-                { icon: FaLightbulb, title: "Soft Skills", desc: "Problem Solving, Leadership, Communication" }
-              ].map((item, index) => (
-                <motion.div
-                  whileHover={{ x: 10, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
-                  key={index}
-                  className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all flex items-start gap-4 shadow-sm group"
-                >
-                  <div className="p-3 rounded-lg bg-accent-500/10 text-accent-400 group-hover:text-accent-300 group-hover:shadow-[0_0_15px_rgba(45,212,191,0.3)] transition-all">
-                    <item.icon size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold text-lg group-hover:text-accent-200 transition-colors">{item.title}</h4>
-                    <p className="text-slate-400 text-sm">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+            {/* High Contrast Stats */}
+            <motion.div variants={itemVariants} className="grid sm:grid-cols-2 gap-6">
+              <div className="card p-8 flex flex-col justify-center min-h-[200px] relative">
+                <div className="absolute top-6 left-6 w-3 h-3 bg-accent-yellow rounded-full" />
+                <h3 className="text-5xl font-display font-bold text-white mb-2">3+</h3>
+                <p className="text-white/50 font-sans text-sm tracking-wide">Years Experience</p>
+              </div>
+              
+              <div className="card p-8 flex flex-col justify-center min-h-[200px] relative">
+                <div className="absolute top-6 left-6 w-3 h-3 bg-accent-cyan rounded-full" />
+                <h3 className="text-5xl font-display font-bold text-white mb-2">12+</h3>
+                <p className="text-white/50 font-sans text-sm tracking-wide">Projects Completed</p>
+              </div>
+
+              <div className="card p-8 flex flex-col justify-center min-h-[200px] relative sm:col-span-2">
+                <div className="absolute top-6 left-6 w-3 h-3 bg-accent-orange rounded-full" />
+                <h3 className="text-5xl font-display font-bold text-white mb-2">BS AI</h3>
+                <p className="text-white/50 font-sans text-sm tracking-wide">Education & Focus</p>
+              </div>
             </motion.div>
           </div>
         </motion.div>

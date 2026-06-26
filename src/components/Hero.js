@@ -1,297 +1,92 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaKaggle, FaEnvelope, FaBrain, FaDatabase, FaCode } from 'react-icons/fa';
-import { SiPython, SiTensorflow, SiPytorch, SiPandas, SiReact } from 'react-icons/si';
-import DecryptedText from './DecryptedText';
+import { FaQuoteLeft } from 'react-icons/fa';
 
 const Hero = () => {
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
-  const scaleVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
-
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-brand-dark bg-grid-pattern">
-      {/* Dynamic Background Elements - Animated */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Glowing Orbs */}
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black pt-32 pb-20">
+      <div className="container-custom relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        
+        {/* Left Column (Text) */}
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent-500/20 rounded-full blur-[100px] mix-blend-screen"
-        />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-          className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px] mix-blend-screen"
-        />
-
-        {/* Floating Particles */}
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute bg-white rounded-full opacity-20"
-            style={{
-              width: Math.random() * 4 + 2 + 'px',
-              height: Math.random() * 4 + 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-            }}
-            animate={{
-              y: [0, -100, 0],
-              x: [0, Math.random() * 50 - 25, 0],
-              opacity: [0, 0.5, 0]
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "linear"
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container-custom relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Left Column: Text Content */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-left"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="lg:col-span-5 flex flex-col"
         >
-          <motion.div variants={itemVariants}>
-            <div className="inline-block px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/30 backdrop-blur-sm text-accent-300 font-bold text-sm mb-6 shadow-glow">
-              👋 Hello, I'm
-            </div>
-          </motion.div>
-
-          <motion.h1 variants={itemVariants} className="heading-lg mb-6">
-            Wajid <span className="text-gradient drop-shadow-neon">Ayub</span>
-          </motion.h1>
-
-
-
-          <div className="h-16 mb-8 text-2xl md:text-3xl text-white font-light flex items-center drop-shadow-md overflow-hidden">
-            <span className="mr-4 text-accent-400 animate-pulse font-bold text-4xl">►</span>
-            <DecryptedText
-              texts={[
-                'AI & Machine Learning Engineer',
-                'Python',
-                'Machine Learning',
-                'Deep Learning',
-                'ANN',
-                'Data Analysis',
-                'Problem Solving',
-                'Analytical Thinking'
-              ]}
-              speed={4000}
-              className="font-semibold text-slate-100 min-w-[300px]"
-            />
-          </div>
-
-          <motion.p variants={itemVariants} className="text-lg text-slate-300 mb-10 max-w-xl leading-relaxed font-medium drop-shadow-sm">
-            I build intelligence into systems. Specializing in designing advanced AI algorithms and creating data-driven solutions that tackle complex real-world challenges.
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-12">
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="btn-primary group"
-            >
-              <span className="relative z-10">View Projects</span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="btn-outline"
-            >
-              Contact Me
-            </button>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div variants={itemVariants} className="flex items-center gap-6">
-            {[
-              { icon: FaGithub, href: 'https://github.com/WajidAyub', label: 'GitHub' },
-              { icon: FaLinkedin, href: 'https://linkedin.com/in/wajid-ayub', label: 'LinkedIn' },
-              { icon: FaKaggle, href: 'https://kaggle.com/wajidayub', label: 'Kaggle' },
-              { icon: FaEnvelope, href: 'mailto:wajidayubwajid@gmail.com', label: 'Email' }
-            ].map(({ icon: Icon, href, label }, index) => (
-              <motion.a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 10, color: "#2dd4bf" }}
-                className="text-slate-400 transition-colors duration-300 p-2 rounded-full hover:bg-white/5 hover:shadow-neon"
-                aria-label={label}
-                custom={index}
-              >
-                <Icon size={28} />
-              </motion.a>
-            ))}
-          </motion.div>
+          <FaQuoteLeft className="text-white text-3xl mb-6 opacity-90" />
+          <h1 className="text-3xl md:text-4xl lg:text-[3.25rem] font-sans font-medium text-white leading-[1.15] tracking-tight">
+            Wajid is the leading AI engineer for optimizing complex data systems, ensuring unparalleled success and efficiency.
+          </h1>
         </motion.div>
 
-        {/* Right Column: Profile Picture - Sleek Tech Portal */}
+        {/* Center Column (Image) */}
         <motion.div
-          variants={scaleVariants}
-          initial="hidden"
-          animate="visible"
-          className="hidden lg:flex justify-center items-center relative"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="lg:col-span-4 flex justify-center relative"
         >
-          {/* Glowing Backend Ring - INTENSE */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-accent-500/40 via-transparent to-purple-500/40 rounded-full blur-[80px] animate-pulse-slow" />
-
-          {/* Tech Portal Container - Circular Planet Edition */}
-          <motion.div
-            animate={{ y: [-10, 10, -10] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-[380px] h-[380px] rounded-full p-2 bg-gradient-to-b from-cyan-500/20 to-purple-500/10 backdrop-blur-md border border-white/10 shadow-neon-strong group"
-          >
-            {/* Inner Glow Border */}
-            <div className="absolute inset-0 rounded-full border border-white/20 shadow-[inset_0_0_20px_rgba(45,212,191,0.2)] pointer-events-none z-10" />
-
-            {/* Image Wrapper */}
-            <div className="w-full h-full rounded-full overflow-hidden relative bg-slate-900/80 z-10">
-              {/* Tech Grid Overlay */}
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay z-10" />
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(18,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(18,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] z-10" />
-
+          <div className="relative inline-block w-full max-w-[360px]">
+            <div className="rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 flex justify-center items-center">
               <img
                 src="/images/profile.png"
                 alt="Wajid Ayub"
-                className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 filter contrast-125"
+                className="w-full h-auto grayscale-[30%] object-contain"
+                style={{ maxHeight: '600px' }}
                 onError={(e) => {
                   e.target.onerror = null;
-                  e.target.src = "https://via.placeholder.com/380x380?text=Profile+Pic";
+                  e.target.src = "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1469&auto=format&fit=crop";
                 }}
               />
-
-              {/* Advanced Scanning Effect */}
-              <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none rounded-full overflow-hidden">
-                <div className="w-full h-[2px] bg-accent-400 shadow-[0_0_15px_rgba(45,212,191,1)] animate-scan relative">
-                  <div className="absolute right-0 -top-1 w-16 h-4 bg-accent-500/20 skew-x-12 blur-sm" />
-                </div>
+            </div>
+            
+            {/* Yellow Overlay Badge */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] bg-[#facc15] rounded-xl p-4 flex justify-between items-center shadow-lg">
+              <div>
+                <h3 className="text-black font-bold font-sans text-sm">Wajid Ayub</h3>
+                <p className="text-black/80 font-medium text-xs">AI & ML Engineer</p>
               </div>
-
-              {/* Digital Status Badge */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-accent-500/30">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-[10px] font-mono text-accent-300 tracking-widest">ONLINE</span>
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-bold font-display text-base">
+                W
               </div>
             </div>
-
-            {/* Solar System Orbiting Skills */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none z-0 hidden xl:block">
-              {/* Inner Ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 rounded-full border border-white/5"
-              >
-                {[
-                  { icon: SiPython, color: "#3776AB", label: "Python" },
-                  { icon: SiTensorflow, color: "#FF6F00", label: "TensorFlow" },
-                  { icon: FaBrain, color: "#FFD700", label: "AI" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      transform: `rotate(${i * 120}deg) translateY(-220px) rotate(-${i * 120}deg)`
-                    }}
-                  >
-                    <motion.div
-                      animate={{ rotate: -360 }}
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="bg-brand-dark/80 backdrop-blur-md border border-white/10 p-3 rounded-full shadow-glow"
-                    >
-                      <item.icon size={24} color={item.color} />
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-              {/* Outer Ring */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-[-50px] rounded-full border border-white/5 border-dashed"
-              >
-                {[
-                  { icon: FaDatabase, color: "#4DB33D", label: "Data" },
-                  { icon: SiPytorch, color: "#EE4C2C", label: "PyTorch" },
-                  { icon: SiPandas, color: "#150458", label: "Pandas" },
-                  { icon: SiReact, color: "#61DAFB", label: "React" },
-                  { icon: FaCode, color: "#ffffff", label: "Code" },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute top-1/2 left-1/2"
-                    style={{
-                      transform: `rotate(${i * 72}deg) translateX(320px) rotate(-${i * 72}deg)`
-                    }}
-                  >
-                    <motion.div
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                      className="bg-brand-dark/80 backdrop-blur-md border border-white/10 p-3 rounded-full shadow-glow"
-                    >
-                      <item.icon size={24} color={item.color} />
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-
-          </motion.div>
+          </div>
         </motion.div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] text-slate-500 tracking-[0.2em] uppercase font-semibold">Scroll Down</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-accent-500 to-transparent opacity-70" />
-      </motion.div>
-    </section >
+        {/* Right Column (Stat Cards) */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="lg:col-span-3 flex flex-col gap-6"
+        >
+          {/* Card 1 */}
+          <div className="card p-6 lg:p-8 flex flex-col justify-center min-h-[140px] lg:min-h-[160px] relative">
+            <div className="absolute top-6 left-6 w-0 h-0 border-l-[6px] border-l-transparent border-t-[10px] border-t-accent-orange border-r-[6px] border-r-transparent transform -rotate-45" />
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-2">12</h2>
+            <p className="text-white/50 font-sans text-xs tracking-wide">Public Repositories</p>
+          </div>
+
+          {/* Card 2 */}
+          <div className="card p-6 lg:p-8 flex flex-col justify-center min-h-[140px] lg:min-h-[160px] relative">
+            <div className="absolute top-6 left-6 w-4 h-2 bg-accent-cyan rounded-b-full" />
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-2">4+</h2>
+            <p className="text-white/50 font-sans text-xs tracking-wide">Core AI Projects</p>
+          </div>
+
+          {/* Card 3 */}
+          <div className="card p-6 lg:p-8 flex flex-col justify-center min-h-[140px] lg:min-h-[160px] relative">
+            <div className="absolute top-6 left-6 w-3 h-3 bg-accent-yellow" style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} />
+            <h2 className="text-4xl lg:text-5xl font-display font-bold text-white mb-2">100%</h2>
+            <p className="text-white/50 font-sans text-xs tracking-wide">Open Source</p>
+          </div>
+        </motion.div>
+
+        </div>
+      </div>
+    </section>
   );
 };
 

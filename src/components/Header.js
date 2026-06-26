@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +9,6 @@ const Header = () => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -25,9 +23,9 @@ const Header = () => {
 
     const navItems = [
         { name: 'About', id: 'about' },
-        { name: 'Skills', id: 'skills' },
         { name: 'Projects', id: 'projects' },
-        { name: 'Contact', id: 'contact' }
+        { name: 'Skills', id: 'skills' },
+        { name: 'GitHub', id: 'github' }
     ];
 
     return (
@@ -36,53 +34,50 @@ const Header = () => {
             animate={{ y: 0 }}
             transition={{ duration: 0.6 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                ? 'bg-brand-dark/80 backdrop-blur-md shadow-lg border-b border-white/5'
-                : 'bg-transparent py-4'
+                ? 'bg-black/90 backdrop-blur-md border-b border-white/10 py-4'
+                : 'bg-transparent py-6'
                 }`}
         >
-            <nav className="container-custom py-2">
+            <nav className="container-custom">
                 <div className="flex justify-between items-center">
                     {/* Logo */}
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                    <button
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                        className="text-2xl font-black text-white tracking-tighter"
+                        className="text-2xl font-display font-bold text-white tracking-tighter flex items-center gap-2"
                     >
-                        WA<span className="text-accent-500">.</span>
-                    </motion.button>
+                        <span className="w-2 h-2 bg-accent-yellow rounded-full" />
+                        Wajid
+                    </button>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    <div className="hidden md:flex items-center space-x-10">
                         {navItems.map((item) => (
                             <button
                                 key={item.name}
                                 onClick={() => scrollToSection(item.id)}
-                                className="relative text-slate-300 hover:text-white transition-colors duration-300 font-medium text-sm tracking-wide group"
+                                className="text-white/60 hover:text-white transition-colors duration-300 font-sans text-sm font-medium"
                             >
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-500 transition-all duration-300 group-hover:w-full"></span>
                             </button>
                         ))}
 
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                        <button
                             onClick={() => scrollToSection('contact')}
-                            className="px-5 py-2 rounded-full border border-accent-500/50 text-accent-400 text-sm font-medium hover:bg-accent-500/10 transition-colors"
+                            className="btn-outline !py-2 !px-6 !text-sm"
                         >
-                            Hire Me
-                        </motion.button>
+                            Contact
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center">
+                    <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-slate-300 hover:text-white transition-colors p-2"
-                            aria-label="Toggle menu"
+                            className="text-white p-2"
                         >
-                            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                            <div className="w-6 h-0.5 bg-white mb-1.5" />
+                            <div className="w-4 h-0.5 bg-white mb-1.5" />
+                            <div className="w-6 h-0.5 bg-white" />
                         </button>
                     </div>
                 </div>
@@ -94,18 +89,26 @@ const Header = () => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden bg-brand-dark/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
+                            className="md:hidden bg-black border-t border-white/10 mt-4"
                         >
-                            <div className="py-4 px-2 flex flex-col space-y-2">
+                            <div className="py-6 flex flex-col space-y-4">
                                 {navItems.map((item) => (
                                     <button
                                         key={item.name}
                                         onClick={() => scrollToSection(item.id)}
-                                        className="block w-full text-left px-4 py-3 text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors font-medium"
+                                        className="text-left px-4 py-2 text-white/60 hover:text-white font-sans text-lg"
                                     >
                                         {item.name}
                                     </button>
                                 ))}
+                                <div className="px-4 pt-4">
+                                  <button
+                                      onClick={() => scrollToSection('contact')}
+                                      className="btn-outline w-full text-center"
+                                  >
+                                      Contact
+                                  </button>
+                                </div>
                             </div>
                         </motion.div>
                     )}

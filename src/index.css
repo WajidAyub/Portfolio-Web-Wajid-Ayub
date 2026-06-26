@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -9,13 +11,12 @@
   }
 
   body {
-    @apply font-sans text-brand-textDark dark:text-brand-textLight bg-brand-light dark:bg-brand-dark transition-colors duration-300;
+    @apply font-sans text-white bg-black transition-colors duration-300;
     overflow-x: hidden;
   }
 
-  /* Selection Color */
   ::selection {
-    @apply bg-accent-500/30 text-accent-300;
+    @apply bg-white/20 text-white;
   }
 }
 
@@ -24,136 +25,47 @@
     @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
   }
 
-  /* Typography with Neon Glows */
+  /* High Contrast Typography */
   .heading-lg {
-    @apply text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white drop-shadow-neonBlue;
+    @apply text-5xl md:text-7xl font-sans font-semibold tracking-tight leading-tight text-white;
   }
 
   .heading-md {
-    @apply text-3xl md:text-5xl font-bold tracking-tight text-white drop-shadow-glowBlue;
+    @apply text-3xl md:text-5xl font-sans font-semibold tracking-tight text-white;
   }
 
   .text-gradient {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent-400 via-cyan-300 to-purple-400 animate-gradient drop-shadow-glow;
+    @apply text-white; /* Removed gradient to match reference */
   }
 
-  /* Premium Glass Cards with Neon Hover */
+  /* Reference Card Style: Black bg, thin white/gray border, rounded corners */
   .card {
-    @apply bg-brand-cardDark/40 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl transition-all duration-500 hover:shadow-neon hover:border-accent-500/50 hover:-translate-y-2 relative overflow-hidden;
+    @apply bg-black border border-white/20 rounded-3xl transition-all duration-500 hover:border-white/40 overflow-hidden;
   }
 
-  /* Shiny edge effect for cards */
-  .card::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none;
-  }
-
-  .card:hover::before {
-    @apply opacity-100;
-  }
-
-  /* Sleek Tech Buttons with Intense Glow */
+  /* Minimalist Buttons */
   .btn-primary {
-    @apply relative overflow-hidden bg-gradient-to-r from-accent-500 to-cyan-500 text-white font-bold py-4 px-8 rounded-full shadow-lg shadow-accent-500/40 transition-all duration-300 hover:shadow-neon hover:scale-105 active:scale-95 text-lg tracking-wide border border-accent-400/20;
+    @apply relative overflow-hidden bg-white text-black font-sans font-semibold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105;
   }
 
   .btn-outline {
-    @apply relative overflow-hidden border border-white/20 bg-white/5 backdrop-blur-sm text-slate-300 font-bold py-4 px-8 rounded-full hover:border-accent-500 hover:text-white transition-all duration-300 hover:shadow-neon hover:bg-accent-500/10 text-lg;
+    @apply relative overflow-hidden bg-transparent text-white font-sans font-medium py-4 px-8 border border-white/20 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300 transform hover:scale-105;
   }
 
-  /* Glass Utilities */
   .glass {
-    @apply bg-brand-dark/30 backdrop-blur-md border border-white/10 shadow-lg;
+    @apply bg-black/50 backdrop-blur-xl border border-white/10 rounded-3xl;
   }
-
-  .glass-panel {
-    @apply bg-brand-cardDark/60 backdrop-blur-2xl border border-white/5 shadow-2xl;
-  }
-}
-
-/* Custom Background Patterns */
-.bg-grid-pattern {
-  background-size: 50px 50px;
-  background-image:
-    linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
-  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* Custom Animations */
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.animate-gradient {
-  animation: gradient 6s linear infinite;
-}
-
-.animate-spin-slow {
-  animation: spin 15s linear infinite;
-}
-
-.animate-reverse-spin {
-  animation: spin 15s linear infinite reverse;
-}
-
-@keyframes scan {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-}
-
-.animate-scan {
-  animation: scan 3s linear infinite;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-brand-dark;
+  @apply bg-black;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-700 rounded-full border-2 border-brand-dark hover:bg-accent-500 transition-colors;
+  @apply bg-white/20 rounded-full hover:bg-white/40 transition-colors;
 }
