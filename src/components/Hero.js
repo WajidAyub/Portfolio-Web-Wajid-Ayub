@@ -33,7 +33,7 @@ const Hero = () => {
               <img
                 src="/images/profile.png"
                 alt="Wajid Ayub"
-                className="w-full h-auto grayscale-[30%] object-contain"
+                className="w-full h-auto object-contain"
                 style={{ maxHeight: '600px' }}
                 onError={(e) => {
                   e.target.onerror = null;
